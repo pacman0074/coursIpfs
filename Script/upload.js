@@ -4,11 +4,12 @@ const secret = process.env.PINATA_SECRET;
 const pinataSDK = require('@pinata/sdk');
 const pinata = pinataSDK(key, secret);
 const fs = require('fs');
-const readableStreamForFile = fs.createReadStream('./Images/4943 (1).png');
+const readableStreamForFile = fs.createReadStream('./Images/TreeSekoya.png');
+
 
 const options = {
     pinataMetadata: {
-        name: "AlyraNFT",
+        name: "TreeNFTSekoya",
     },
     pinataOptions: {
         cidVersion: 0
@@ -18,9 +19,9 @@ const options = {
 
 pinata.pinFileToIPFS(readableStreamForFile, options).then((result) => {
     const body = {
-        description: "Un NFT tres beau pour alyra.",
+        description: "Tree sekoya",
         image: result.IpfsHash,
-        name: "BestNFT",
+        name: "TreeNFTSekoya",
     };
 
     pinata.pinJSONToIPFS(body, options).then((json) => {
